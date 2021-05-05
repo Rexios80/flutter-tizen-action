@@ -22,7 +22,9 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: sudo apt install libpython2.7
+    - run: |
+        sudo apt update
+        sudo apt install libpython2.7
       shell: bash
 
     - run: |
@@ -49,6 +51,7 @@ runs:
         export PATH=$GITHUB_WORKSPACE/tizen-studio/package-manager:$PATH
         export PATH=$GITHUB_WORKSPACE/flutter-tizen/bin:$PATH
         package-manager-cli.bin install ${{ inputs.tizen-platform }}-NativeAppDevelopment-CLI
+        flutter-tizen doctor -v
         flutter-tizen pub get
         flutter-tizen build tpk
       shell: bash
