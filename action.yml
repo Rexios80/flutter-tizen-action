@@ -50,6 +50,7 @@ runs:
         export PATH=$GITHUB_WORKSPACE/tizen-studio/tools:$GITHUB_WORKSPACE/tizen-studio/tools/ide/bin:$PATH
         export PATH=$GITHUB_WORKSPACE/tizen-studio/package-manager:$PATH
         export PATH=$GITHUB_WORKSPACE/flutter-tizen/bin:$PATH
+        package-manager-cli.bin install TOOLS
         package-manager-cli.bin install ${{ inputs.tizen-platform }}-NativeAppDevelopment-CLI
         flutter-tizen doctor -v
         flutter-tizen pub get
