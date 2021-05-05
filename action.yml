@@ -21,6 +21,8 @@ runs:
     - run: |
         sudo apt update
         sudo apt install python3 curl file git make xz-utils zip
+        ln -s /usr/bin/python /usr/bin/python3
+        which python3
       shell: bash
 
     - run: |
