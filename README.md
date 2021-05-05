@@ -49,7 +49,7 @@ tizen-studio-version:
   required: false
   default: '4.1'
 tizen-platform:
-  description: 'The api level your app'
+  description: 'The platform your app runs on'
   required: false
   default: 'WEARABLE-5.5'
 author-certificate-file:
