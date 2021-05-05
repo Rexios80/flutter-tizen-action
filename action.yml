@@ -1,5 +1,5 @@
-name: 'Build flutter-tizen app'
-description: 'Setup flutter-tizen'
+name: 'Build flutter-tizen tpk'
+description: 'Build flutter-tizen tpk'
 inputs:
   project-root:
     description: 'The root of your flutter-tizen project'
