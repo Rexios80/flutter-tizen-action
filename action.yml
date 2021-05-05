@@ -9,6 +9,10 @@ inputs:
     description: 'Tizen Studio version (default 4.1)'
     required: false
     default: '4.1'
+  tizen-api-version:
+    description: 'The api level your app'
+    required: false
+    default: '5.5'
   certificate-file:
     description: 'Signing certificate file'
     required: true
@@ -39,7 +43,9 @@ runs:
 
     - run: |
         export PATH=$GITHUB_WORKSPACE/tizen-studio/tools:$GITHUB_WORKSPACE/tizen-studio/tools/ide/bin:$PATH
+        export PATH=$GITHUB_WORKSPACE/tizen-studio/package-manager:$PATH
         export PATH=$GITHUB_WORKSPACE/flutter-tizen/bin:$PATH
+        package-manager-cli.bin install WEARABLE-${{ inputs.tizen-api-version }}-NativeAppDevelopment-CLI
         flutter-tizen pub get
         flutter-tizen build tpk
       shell: bash
