@@ -14,10 +14,10 @@ inputs:
     required: false
     default: 'WEARABLE-5.5'
   author-certificate-file:
-    description: 'Signing certificate file'
+    description: 'Author certificate file'
     required: true
   author-certificate-password:
-    description: 'Signing certificate password'
+    description: 'Author certificate password'
     required: true
   distributor-certificate-file:
     description: 'Distributor certificate file'
