@@ -52,7 +52,6 @@ runs:
         export PATH=$GITHUB_WORKSPACE/flutter-tizen/bin:$PATH
         package-manager-cli.bin install TOOLS
         package-manager-cli.bin install ${{ inputs.tizen-platform }}-NativeAppDevelopment-CLI
-        flutter-tizen doctor -v
         flutter-tizen pub get
         flutter-tizen build tpk
       shell: bash
