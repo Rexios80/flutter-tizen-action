@@ -1,0 +1,52 @@
+name: 'Build flutter-tizen app'
+description: 'Setup flutter-tizen'
+inputs:
+  project-root:
+    description: 'The root of your flutter-tizen project'
+    required: false
+    default: $GITHUB_WORKSPACE
+  tizen-studio-version:
+    description: 'Tizen Studio version (default 4.1)'
+    required: false
+    default: '4.1'
+  certificate-base64:
+  	description: 'Signing certificate file encoded in bse64'
+  	required: true
+  certificate-password:
+    description: 'Signing certificate password'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - id: write_certificate_file
+      uses: timheuer/base64-to-file@v1
+      with:
+        fileName: 'certificate.p12'
+        encodedString: ${{ inputs.certificate-base64 }}
+
+    - run: |
+        curl http://download.tizen.org/sdk/Installer/tizen-studio_${{ inputs.tizen-studio-version }}/web-cli_Tizen_Studio_${{ inputs.tizen-studio-version }}_ubuntu-64.bin > tizen-studio.bin
+        chmod 755 tizen-studio.bin
+        mkdir tizen-studio
+        ./tizen-studio.bin --no-java-check --accept-license $GITHUB_WORKSPACE/tizen-studio
+        rm tizen-studio.bin
+      shell: bash
+
+    -run: |
+        export PATH=$GITHUB_WORKSPACE/tizen-studio/tools:$GITHUB_WORKSPACE/tizen-studio/tools/ide/bin:$PATH
+        tizen security-profiles add -n ActionsProfile -a ${{ steps.write_certificate_file.outputs.filePath }} -p "${{ inputs.certificate-password }}"
+      shell: bash
+
+    - run: |
+        mkdir flutter-tizen
+        git clone https://github.com/flutter-tizen/flutter-tizen.git flutter-tizen
+      shell: bash
+
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.0.x'
+      run: |
+        export PATH=$GITHUB_WORKSPACE/tizen-studio/tools:$GITHUB_WORKSPACE/tizen-studio/tools/ide/bin:$PATH
+        export PATH=$GITHUB_WORKSPACE/flutter-tizen/bin
+        flutter-tizen build tpk
+      shell: bash
