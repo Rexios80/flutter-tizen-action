@@ -23,6 +23,7 @@ runs:
   using: "composite"
   steps:
     - run: sudo apt install libpython2.7
+      shell: bash
 
     - run: |
         curl http://download.tizen.org/sdk/Installer/tizen-studio_${{ inputs.tizen-studio-version }}/web-cli_Tizen_Studio_${{ inputs.tizen-studio-version }}_ubuntu-64.bin > tizen-studio.bin
