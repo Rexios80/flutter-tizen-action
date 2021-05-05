@@ -28,7 +28,7 @@ runs:
 
     - run: |
         export PATH=$GITHUB_WORKSPACE/tizen-studio/tools:$GITHUB_WORKSPACE/tizen-studio/tools/ide/bin:$PATH
-        tizen security-profiles add -n ActionsProfile -a ${{ inputs.certificate-file }} -p ${{ inputs.certificate-password }}
+        tizen security-profiles add -n ActionsProfile -a ${{ inputs.certificate-file }} -p "${{ inputs.certificate-password }}"
       shell: bash
 
     - run: |
