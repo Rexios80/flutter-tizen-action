@@ -1,4 +1,4 @@
-name: 'Build flutter-tizen tpk'
+name: 'flutter-tizen-action'
 description: 'Build flutter-tizen tpk'
 branding:
   icon: 'box'  
