@@ -10,8 +10,8 @@ inputs:
     required: false
     default: '4.1'
   certificate-base64:
-  	description: 'Signing certificate file encoded in bse64'
-  	required: true
+    description: 'Signing certificate file encoded in bse64'
+    required: true
   certificate-password:
     description: 'Signing certificate password'
     required: true
