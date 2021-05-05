@@ -24,8 +24,7 @@ inputs:
     required: true
   distributor-certificate-password:
     description: 'Distributor certificate password'
-    required: false
-    default: 'tizenpkcs12passfordsigner'
+    required: true
 
 runs:
   using: "composite"
