@@ -54,7 +54,7 @@ runs:
         export PATH=$GITHUB_WORKSPACE/tizen-studio/tools:$GITHUB_WORKSPACE/tizen-studio/tools/ide/bin:$PATH
         export PATH=$GITHUB_WORKSPACE/tizen-studio/package-manager:$PATH
         export PATH=$GITHUB_WORKSPACE/flutter-tizen/bin:$PATH
-        package-manager-cli.bin install NativeCLI NativeToolchain-Gcc-9.2 Certificate-Manager cert-add-on ${{ inputs.tizen-platform }}-NativeAppDevelopment-CLI
+        package-manager-cli.bin install --accept-license NativeCLI NativeToolchain-Gcc-9.2 Certificate-Manager cert-add-on ${{ inputs.tizen-platform }}-NativeAppDevelopment-CLI
         flutter-tizen pub get
         flutter-tizen build tpk
         tizen cli-config -l
