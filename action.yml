@@ -24,7 +24,7 @@ runs:
   steps:
     - run: |
         sudo apt update
-        sudo apt install libpython2.7
+        sudo apt install libpython2.7 expect gettext
       shell: bash
 
     - run: |
