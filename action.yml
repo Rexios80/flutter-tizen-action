@@ -44,7 +44,7 @@ runs:
 
     - run: |
         export PATH=$GITHUB_WORKSPACE/tizen-studio/tools:$GITHUB_WORKSPACE/tizen-studio/tools/ide/bin:$PATH
-        tizen security-profiles add -A -n ActionsProfile -a ${{ inputs.author-certificate-file }} -p "${{ inputs.author-certificate-password }}" -d ${{ inputs.distributor-certificate-file }} -dp "${{ inputs.distributor-certificate-password }}"
+        tizen security-profiles add -A -n ActionsProfile -a ${{ inputs.author-certificate-file }} -p ${{ inputs.author-certificate-password }} -d ${{ inputs.distributor-certificate-file }} -dp ${{ inputs.distributor-certificate-password }}
         tizen cli-config "profiles.path=$GITHUB_WORKSPACE/tizen-studio-data/profile/profiles.xml"
       shell: bash
 
