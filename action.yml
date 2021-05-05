@@ -19,6 +19,11 @@ runs:
   using: "composite"
   steps:
     - run: |
+        sudo apt update
+        sudo apt install python3 curl file git make xz-utils zip
+      shell: bash
+
+    - run: |
         curl http://download.tizen.org/sdk/Installer/tizen-studio_${{ inputs.tizen-studio-version }}/web-cli_Tizen_Studio_${{ inputs.tizen-studio-version }}_ubuntu-64.bin > tizen-studio.bin
         chmod 755 tizen-studio.bin
         mkdir tizen-studio
@@ -29,6 +34,7 @@ runs:
     - run: |
         export PATH=$GITHUB_WORKSPACE/tizen-studio/tools:$GITHUB_WORKSPACE/tizen-studio/tools/ide/bin:$PATH
         tizen security-profiles add -n ActionsProfile -a ${{ inputs.certificate-file }} -p "${{ inputs.certificate-password }}"
+        tizen cli-config "profiles.path=$GITHUB_WORKSPACE/tizen-studio-data/profile/profiles.xml"
       shell: bash
 
     - run: |
