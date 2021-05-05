@@ -39,7 +39,7 @@ runs:
 
     - run: |
         export PATH=$GITHUB_WORKSPACE/tizen-studio/tools:$GITHUB_WORKSPACE/tizen-studio/tools/ide/bin:$PATH
-        export PATH=$GITHUB_WORKSPACE/flutter-tizen/bin
+        export PATH=$GITHUB_WORKSPACE/flutter-tizen/bin:$PATH
         flutter-tizen pub get
         flutter-tizen build tpk
       shell: bash
