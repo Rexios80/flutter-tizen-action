@@ -19,13 +19,6 @@ runs:
   using: "composite"
   steps:
     - run: |
-        sudo apt update
-        sudo apt install python3 curl file git make xz-utils zip
-        mkdir /usr/bin/env
-        ln -s /usr/bin/python3 /usr/bin/env/python3
-      shell: bash
-
-    - run: |
         curl http://download.tizen.org/sdk/Installer/tizen-studio_${{ inputs.tizen-studio-version }}/web-cli_Tizen_Studio_${{ inputs.tizen-studio-version }}_ubuntu-64.bin > tizen-studio.bin
         chmod 755 tizen-studio.bin
         mkdir tizen-studio
@@ -47,5 +40,6 @@ runs:
     - run: |
         export PATH=$GITHUB_WORKSPACE/tizen-studio/tools:$GITHUB_WORKSPACE/tizen-studio/tools/ide/bin:$PATH
         export PATH=$GITHUB_WORKSPACE/flutter-tizen/bin
+        flutter-tizen pub get
         flutter-tizen build tpk
       shell: bash
