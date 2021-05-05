@@ -13,17 +13,11 @@ inputs:
     description: 'The api level your app'
     required: false
     default: 'WEARABLE-5.5'
-  author-ca-certificate-file:
-    description: 'Author CA certificate file'
-    required: true
   author-certificate-file:
     description: 'Author certificate file'
     required: true
   author-certificate-password:
     description: 'Author certificate password'
-    required: true
-  distributor-ca-certificate-file:
-    description: 'Distributor CA certificate file'
     required: true
   distributor-certificate-file:
     description: 'Distributor certificate file'
@@ -51,7 +45,7 @@ runs:
 
     - run: |
         export PATH=$GITHUB_WORKSPACE/tizen-studio/tools:$GITHUB_WORKSPACE/tizen-studio/tools/ide/bin:$PATH
-        tizen security-profiles add -A -n ActionsProfile -c ${{ inputs.author-ca-certificate-file }} -a ${{ inputs.author-certificate-file }} -p "${{ inputs.author-certificate-password }}" -dc ${{ inputs.distributor-ca-certificate-file }} -d ${{ inputs.distributor-certificate-file }} -dp "${{ inputs.distributor-certificate-password }}"
+        tizen security-profiles add -A -n ActionsProfile -a ${{ inputs.author-certificate-file }} -p "${{ inputs.author-certificate-password }}" -d ${{ inputs.distributor-certificate-file }} -dp "${{ inputs.distributor-certificate-password }}"
         tizen cli-config "profiles.path=$GITHUB_WORKSPACE/tizen-studio-data/profile/profiles.xml"
       shell: bash
 
