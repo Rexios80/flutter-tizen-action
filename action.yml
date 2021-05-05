@@ -1,7 +1,8 @@
 name: 'Build flutter-tizen tpk'
 description: 'Build flutter-tizen tpk'
-icon: box
-color: blue
+branding:
+  icon: 'box'  
+  color: 'blue'
 inputs:
   project-root:
     description: 'The root of your flutter-tizen project'
