@@ -40,10 +40,6 @@ build_tpk:
 Inputs:
 
 ```
-project-root:
-  description: 'The root of your flutter-tizen project'
-  required: false
-  default: $GITHUB_WORKSPACE
 tizen-studio-version:
   description: 'Tizen Studio version (default 4.1)'
   required: false
