@@ -16,6 +16,10 @@ inputs:
     description: 'The platform your app runs on'
     required: false
     default: 'WEARABLE-5.5'
+  device-profile:
+    description: 'The device profile you want to use'
+    required: false
+    default: 'wearable'
   author-certificate-file:
     description: 'Author certificate file'
     required: true
@@ -62,7 +66,7 @@ runs:
         export PATH=$GITHUB_WORKSPACE/flutter-tizen/bin:$PATH
         package-manager-cli.bin install --accept-license NativeCLI NativeToolchain-Gcc-9.2 Certificate-Manager cert-add-on ${{ inputs.tizen-platform }}-NativeAppDevelopment-CLI
         flutter-tizen pub get
-        flutter-tizen build tpk
+        flutter-tizen build tpk --device-profile ${{ inputs.device-profile }}
         tizen cli-config -l
         cat tizen-studio-data/profile/profiles.xml
       shell: bash

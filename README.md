@@ -23,7 +23,7 @@ build_tpk:
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '5.0.x'
-    - uses: Rexios80/flutter-tizen-action@v4
+    - uses: Rexios80/flutter-tizen-action@v5
       with:
         author-certificate-file: author.p12
         author-certificate-password: hunter2
