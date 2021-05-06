@@ -52,6 +52,10 @@ tizen-platform:
   description: 'The platform your app runs on'
   required: false
   default: 'WEARABLE-5.5'
+device-profile:
+  description: 'The device profile you want to use'
+  required: false
+  default: 'wearable'
 author-certificate-file:
   description: 'Author certificate file'
   required: true
